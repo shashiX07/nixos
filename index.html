@@ -1,40 +1,445 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+    <title>NixOS</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css">
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+    <style>
+        section {
+            position: relative;
+        }
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+        h1 {
+            position: relative;
+            z-index: 10000;
+            background-color: rgb(21, 76, 121);
+            color: white !important;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 2rem !important;
+            display: inline-block;
+            padding: 0.5em 2em;
+            width: auto !important;
+            top: 0 !important;
+            text-align: center !important;
+            clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+        }
+
+        p {
+            position: relative;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.6rem !important;
+            text-align: left !important;
+            padding: 0.1em 0.8em;
+            background-color: rgb(201, 218, 248);
+            color: black !important;
+            width: auto !important;
+            border-radius: 10px;
+        }
+
+        strong {
+            color: rgb(21, 76, 121);
+        }
+
+        .custom-list {
+            list-style: none !important;
+            padding-left: 40px;
+        }
+
+        .custom-list li {
+            background: url('assets/liststyle.png') no-repeat left center;
+            background-size: 20px 20px;
+            padding-left: 30px;
+            font-size: 1.6rem !important;
+            font-family: 'Times New Roman', Times, serif !important;
+        }
+
+        .list-img data-preview-image {
+            width: 10%;
+            margin-right: 2%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1.6rem;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgb(21, 76, 121);
+            color: white;
+        }
+
+        tbody tr {
+            background-color: rgb(201, 218, 248);
+            color: black;
+        }
+
+        li {
+            color: black !important;
+        }
+
+        /* Make it more responsive for smaller screens */
+        @media (max-width: 768px) {
+            h1 {
+                position: static !important;
+                transform: none !important;
+                clip-path: none !important;
+                margin: 1em auto !important;
+                font-size: 1.2rem !important;
+                text-align: center !important;
+                background-color: rgb(21, 76, 121) !important;
+                /* Specify a color here */
+            }
+
+            .custom-list {
+                padding-left: 20px;
+            }
+
+            .custom-list li {
+                background-size: 15px 15px;
+                padding-left: 25px;
+                color: black;
+
+            }
+
+            table {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section class="slide1" data-background="#ffffff" data-background-image="assets/Nixos.png">
+                <h1>NixOS : A Linux Distro</h1>
+            </section>
+            <section class="slide2" data-background-image="assets/back.jpg">
+                <h1>What is NixOS ?</h1>
+                <div style="display: flex;">
+                    <p>NixOS is a Linux based Operating System based on the <strong>Nix package manager.</strong> Unlike
+                        traditional distributions such as Ubuntu, Arch, or Fedora, where software installations modify
+                        system state unpredictably, NixOS ensures a consistent environment through <strong>declarative
+                            configuration management.</strong>
+                    </p>
+                    <img data-preview-image src="assets/30dlinux.png" alt="linux-30-img"
+                        style="position: absolutes; width: 20%; right: 0;z-index: 1000;">
+                </div>
+                <p style="background : transparent; margin-top: 10%;">
+                    <strong>Nix Package Manager :</strong>The Nix Package Manager is a tool that installs and manages
+                    software very carefully. It keeps each program in its own “bubble,” so different versions of
+                    software won’t interfere with each other.
+                </p>
+            </section>
+            <!--Slide 2 started-->
+            <section class="slide3" data-background-image="assets/back.jpg">
+                <section class="vslide3-1">
+                    <h1>Features of NixOS :</h1>
+                    <div style="display: flex;">
+                        <p><strong>1 : Declarative System Configuration :</strong> In NixOS, the entire system configuration
+                            is
+                            written in a single file (/etc/nixos/configuration.nix). Users define the system state
+                            (packages, services, configurations) in this file, and the system ensures that the desired
+                            state
+                            is always maintained.</p>
+                    </div>
+
+                    <div style="display: flex;">
+                        <p><strong>2 : Reproducibility :</strong> Since the entire system state is defined in a single file,
+                            you can <b>reproduce the same environment</b> on different machines by simply copying the
+                            configuration file.</p>
+                    </div>
+
+                    <img data-preview-image src="assets/Nix-config.png" alt="code" style="width: 70%;top: 0;">
+                </section>
+                <section class="vslide3-2">
+                    <div class="" style="display: flex;">
+                        <img data-preview-image src="assets/penguin-blink.png" alt="penguin-blink" style="width: 30%;right: 0;">
+                        <p style="display: flex; align-items:center;">Due to Reproducibility Nix is especially useful
+                            for developers, server admins, and scientists who need consistent
+                            environments across multiple systems.</p>
+                    </div>
+                </section>
+            </section>
+            <!--Slide4-->
+            <section class="slide4" data-background-image="assets/back.jpg">
+                <h1>Features of NixOS : (Continued)</h1>
+                <div style="position: relative !important;">
+                    <p style="position: relative;"><strong>3. Atomic Upgrades and Rollbacks : </strong>
+                        Every change in NixOS creates a new generation of the system.If an update breaks something, you
+                        can
+                        instantly rollback to the previous working state using:
+                    </p>
+                    <img data-preview-image style="position: relative;width: 40%;margin: 0;" src="assets/rollback.png" alt="rollback">
+                    <div style="display: flex; position: absolute;top: 90%;">
+                        <img data-preview-image src="assets/penguin-fish.png" alt="penguin-fish" style="width: 10%;right: 0;">
+                        <p>
+                            Unlike traditional package managers (APT, DNF, Pacman), where package upgrades can cause
+                            partial system failures, NixOS ensures atomic changes, meaning the system is always in a
+                            valid state.
+                        </p>
+                    </div>
+                </div>
+                <p style="position:absolute;top: 130%;"><strong>4. Package Management Without System Pollution :
+                    </strong>
+                    Traditional Linux distros install software in shared directories (/usr/bin, /lib, etc.), which can
+                    lead to dependency conflicts.Nix uses a unique approach: every package and its dependencies are
+                    stored in the /nix/store with unique cryptographic hashes.
+                </p>
+            </section>
+            <section data-background-image="assets/back.jpg" class="slide5">
+                <h1>Features of NixOS : (Continued)</h1>
+                <p>
+                    <strong>5. No More "Broken Systems" Due to Failed Updates :</strong>
+                    In traditional Linux distros, if an upgrade fails halfway, your system may become unusable.
+                    Updates are transactional, meaning either they complete successfully, or they don't apply at all.
+                </p>
+                <p><strong>6. User-Specific Environments (No Root Needed) : </strong>
+                    Users can install packages without root permissions, thanks to profiles.
+                    Each user gets a separate environment, reducing conflicts.
+                    <br>
+                    <i>Example :</i> <br>
+                    <b style="background-color: rgb(144, 176, 246, 0.5); padding: 2px;border-radius: 10px;"><i>nix-env
+                            -iA nixpkgs.firefox</i></b>
+                </p>
+                <p>
+                    <strong>
+                        7. Garbage Collection :
+                    </strong>
+                    Since packages are immutable, old versions accumulate in /nix/store.
+                    You can remove unused packages with: <br>
+                    <b style="background-color: rgb(144, 176, 246, 0.5); padding: 2px;border-radius: 10px;"><i>nix-collect-garbage
+                            -d</i></b>
+                </p>
+            </section>
+            <section class="slide6" data-background-image="assets/back.jpg">
+                <section>
+                    <h1>Feature Comparison</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Traditional Linux Distros</th>
+                                <th>NixOS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Package Management</td>
+                                <td>APT (Debian), Pacman (Arch), DNF (Fedora)</td>
+                                <td>Nix</td>
+                            </tr>
+                            <tr>
+                                <td>Configuration</td>
+                                <td>Manual (files scattered across /etc/)</td>
+                                <td>Declarative (configuration.nix)</td>
+                            </tr>
+                            <tr>
+                                <td>Rollbacks</td>
+                                <td>Not easy or requires snapshots</td>
+                                <td>Instant and built-in</td>
+                            </tr>
+                            <tr>
+                                <td>Dependency Handling</td>
+                                <td>Shared libraries, prone to conflicts</td>
+                                <td>Isolated packages in /nix/store</td>
+                            </tr>
+                            <tr>
+                                <td>Upgrade Safety</td>
+                                <td>Risk of breaking system</td>
+                                <td>Atomic updates</td>
+                            </tr>
+                            <tr>
+                                <td>Reproducibility</td>
+                                <td>Hard to replicate across machines</td>
+                                <td>Perfectly reproducible</td>
+                            </tr>
+                            <tr>
+                                <td>Multiple Versions of Software</td>
+                                <td>Difficult to manage</td>
+                                <td>Seamlessly supported</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                <section data-background-image="assets/m1.png">
+
+                </section>
+            </section>
+            <section class="slide7" data-background-image="assets/back.jpg">
+                <div style="display: flex; justify-content: space-between;">
+                    <h1 style="height: 70% !important;">Use Cases for NixOS</h1>
+                    <img data-preview-image src="assets/peng-lap.jpg" alt="" style="width: 10%;">
+                </div>
+                <p>
+                    <strong>1. DevOps & CI/CD : </strong>
+                    Ensures identical environments across developers’ machines and CI/CD pipelines.
+                    No "works on my machine" issues. <br><br>
+
+                    <strong>2. Software Development : </strong>
+                    Developers can use multiple versions of the same software without conflicts.
+                    Example: Having Python 2.7, 3.8, and 3.10 installed simultaneously. <br><br>
+                    <strong>3. System Administrators : </strong>
+                    Rollbacks and atomic updates make managing servers easier and safer. <br><br>
+                    <strong>4. Research and Science : </strong>
+                    Scientists needing reproducible computational environments benefit from the declarative approach.
+                    <br><br>
+                    <strong>5. Security : </strong>
+                    Since packages are immutable, there is less risk of accidental modification.
+                    No more accidental "rm -rf /usr/bin" disasters. <br><br>
+                </p>
+            </section>
+            <section class="slide8" data-background-image="assets/back.jpg">
+                <h1>Downsides of NixOS</h1>
+                <p>
+                    <strong>1. Steep Learning Curve:</strong>
+                    Nix’s functional programming language is unusual for system configurations.
+                    Learning to write configuration.nix takes time. <br><br>
+                </p>
+                <p>
+                    <strong>
+                        2. Smaller Community:
+                    </strong>
+                    Compared to Ubuntu, Fedora, or Arch, NixOS has a smaller user base.
+                    Finding help may take longer. <br><br>
+                </p>
+                <p>
+                    <strong>3. Storage Overhead:</strong>
+                    Since packages are stored uniquely with hashes, disk usage can be high.
+                    Regular garbage collection is needed.
+                </p>
+
+            </section>
+            <section class="slide9" data-background-image="assets/back.jpg">
+                <h1>Key Features of the Nix Language</h1>
+                <ul class="custom-list" style="padding-bottom: 20px;">
+                    <p>The Nix language is a purely functional, domain-specific language (DSL) designed for declarative
+                        package management and system configuration. It is used primarily in Nix, NixOS, and Nixpkgs to
+                        define system states, package builds, and configurations.</p>
+                    <li><strong>Purely Functional</strong>: No side effects, same input produces same output.</li>
+                    <li><strong>Declarative</strong>: You describe the desired state, and Nix ensures it.</li>
+                    <li><strong>Lazy Evaluation</strong>: Expressions evaluate only when needed.</li>
+                    <li><strong>Strongly Typed</strong>: Works with integers, strings, lists, sets, functions, etc.</li>
+                    <li><strong>Package-Oriented</strong>: Built to define and manage software dependencies cleanly.
+                </ul>
+            </section>
+            <section data-background-image="assets//back.jpg" class="slide11">
+                <h1>How to create a nix package</h1>
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <p style="height: 20% !important;">Step 1: Create a Directory : </p>
+                    <img data-preview-image src="assets/mkdir.png" alt="dir creation" style="width: 40%; margin: 0 !important;">
+                </div>
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <p style="height: 20% !important;">Step 2: Create a Bash Script</p>
+                    <img data-preview-image src="assets/bash.png" alt="dir creation" style="width: 50%; margin: 0 !important;">
+                </div>
+            </section>
+            <section data-background-image="assets/back.jpg" class="slide12">
+                <section>
+                    <h1>Package Creation (continued)</h1>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <p style="height: 20% !important;">Step 3: Write a default.nix</p>
+                        <img data-preview-image src="assets/default.png" alt="dir creation" style="width: 50%; margin: 0 !important;">
+                    </div>
+                </section>
+
+                <section>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <p style="height: 20% !important;">Step 4: Build the Package</p>
+                        <img data-preview-image src="assets/build.png" alt="dir creation" style="width: 50%; margin: 0 !important;">
+                    </div>
+                    <p>This will create a package in ./result/, and you can run it using:
+                        <img data-preview-image src="assets/run.png" alt="dir creation" style="width: 50%; margin: 0 !important;">
+                    </p>
+
+                </section>
+            </section>
+            <section data-background-image="assets/back.jpg">
+                <section>
+                    <h1>3. Packaging an External Source Code</h1>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <p style="height: 20% !important;">We can package package a C program or fetch source code from
+                            GitHub by using the fetchurl or fetchFromGitHub functions. <br><strong>Example: Packaging htop
+                                (from GitHub)</strong> <br>
+                            <img data-preview-image src="assets/htop.png" alt="dir creation" style="width: 40%; margin: 0 !important;">
+                        </p>
+                    </div>
+                </section>
+                <section>
+                    <h1>Installing & Unistalling</h1>
+                    <p><strong>We can install thepackage by :</strong></p>
+                    <img data-preview-image src="assets/install.png" alt="install" style="width: 50%; margin: 0 !important;">
+                    <p>To unistall : </p>
+                    <img data-preview-image src="assets/uninstall.png" alt="unistall" style="width: 50%; margin: 0 !important;">
+                </section>
+            </section>
+			<section data-background-image="assets/back.jpg" class="slide-thank-you">
+				<div style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
+					<h1 style="font-size: 2.5rem !important; text-align: center !important; padding: 0.5em 2em; margin-bottom: 30px;">Thank You!</h1>
+					
+					<p style="text-align: center !important; width: 80%; margin: 0 auto 20px auto;">
+						<strong>Thanks for exploring NixOS with us!</strong><br>
+						We hope you've gained valuable insights into this unique Linux distribution and its powerful package management system.
+					</p>
+					
+					<div style="display: flex; justify-content: center; margin-top: 20px; padding: 0;">
+						<img data-preview-image src="assets/penguin-fish.png" alt="penguin" style="width: 15%; margin-right: 60px;">
+						<img data-preview-image src="assets/Nixos.png" alt="nixos-logo" style="width: 15%; margin-right: 60px;">
+						<img data-preview-image src="assets/penguin-blink.png" alt="penguin-blink" style="width: 15%;">
+					</div>
+					
+					<p style="text-align: center !important; width: 70%; margin: 30px auto 0 auto; background-color: rgb(21, 76, 121); color: white !important;">
+						<strong style="color: white;">Further Resources:</strong><br>
+						NixOS Website: <a href="https://nixos.org" style="color: white; text-decoration: underline;">nixos.org</a><br>
+						Nix Package Repository: <a href="https://search.nixos.org/packages" style="color: white; text-decoration: underline;">search.nixos.org/packages</a><br>
+						NixOS Wiki: <a href="https://nixos.wiki" style="color: white; text-decoration: underline;">nixos.wiki</a>
+					</p>
+				</div>
+			</section>
+        </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+            autoSlide:15000,
+            loop: false,
+            slideNumber: true,
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+</body>
+
 </html>
